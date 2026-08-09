@@ -35,6 +35,10 @@ export function Lifestyle() {
                 src={PRODUCT_IMAGES[2]} 
                 alt="غرفة نوم مغربية عصرية" 
                 className="absolute inset-0 w-full h-full object-cover object-center scale-110"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

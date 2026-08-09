@@ -88,8 +88,11 @@ export function Hero() {
                     src={src} 
                     alt={`طقم مفارش سرير Soft Estampado - صورة ${idx + 1}`} 
                     className="w-full h-auto object-cover aspect-[4/3] lg:aspect-square shrink-0"
+                    width={800}
+                    height={800}
                     loading={idx === 0 ? "eager" : "lazy"}
                     fetchPriority={idx === 0 ? "high" : "auto"}
+                    decoding={idx === 0 ? "sync" : "async"}
                   />
                 ))}
               </div>

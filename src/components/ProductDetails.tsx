@@ -12,7 +12,11 @@ export function ProductDetails() {
               <img 
                 src={PRODUCT_IMAGES[1]} 
                 alt="طقم مفارش سرير Soft Estampado" 
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover aspect-[4/3]"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

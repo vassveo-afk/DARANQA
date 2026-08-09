@@ -33,17 +33,24 @@ export function OrderForm() {
     setStatus('loading');
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbw1uDPCHynKT_F6bnceSudBv125WIBHHkXe9em735CcfnYq58IsVbMuMTGhASGtP84j/exec", {
+      const formBody = new URLSearchParams();
+      Object.entries(formData).forEach(([key, value]) => {
+        formBody.append(key, value);
+      });
+
+      await fetch("https://script.google.com/macros/s/AKfycbyTGaiVmoHw6MRUkbaFuf9wLjYnNcSNEGhH_dVpqZvFgGDWs7doXOVE0a0vHRDNTHxq/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: JSON.stringify(formData)
+        body: formBody.toString()
       });
       
       setStatus('success');
-      if (window.ttq) window.ttq.track('CompletePayment');
+      
+      const offerValue = formData.offer.includes('279') ? 279 : formData.offer.includes('479') ? 479 : 699;
+      window.location.href = `/thank-you.html?value=${offerValue}`;
       
     } catch (error) {
       console.error('Order submission error:', error);
@@ -209,7 +216,7 @@ export function OrderForm() {
                         }`}
                       >
                         <div className="aspect-square w-full">
-                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" />
+                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" width={100} height={100} loading="lazy" decoding="async" />
                         </div>
                         <div className={`text-xs text-center py-1.5 font-bold ${formData.color === colorOption.name ? 'bg-primary text-white' : 'bg-gray-50 text-text-main'}`}>
                           {colorOption.label}
@@ -243,7 +250,7 @@ export function OrderForm() {
                         }`}
                       >
                         <div className="aspect-square w-full">
-                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" />
+                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" width={100} height={100} loading="lazy" decoding="async" />
                         </div>
                         <div className={`text-xs text-center py-1.5 font-bold ${formData.color2 === colorOption.name ? 'bg-primary text-white' : 'bg-gray-50 text-text-main'}`}>
                           {colorOption.label}
@@ -277,7 +284,7 @@ export function OrderForm() {
                         }`}
                       >
                         <div className="aspect-square w-full">
-                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" />
+                          <img src={colorOption.src} alt={colorOption.label} className="w-full h-full object-cover" width={100} height={100} loading="lazy" decoding="async" />
                         </div>
                         <div className={`text-xs text-center py-1.5 font-bold ${formData.color3 === colorOption.name ? 'bg-primary text-white' : 'bg-gray-50 text-text-main'}`}>
                           {colorOption.label}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شكراً لطلبك | تم التأكيد</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#E5A99B', // Muted Terracotta
+                dark: '#D49586',
+              },
+              accent: {
+                DEFAULT: '#F4D8CD', // Soft Peach
+              },
+              text: {
+                main: '#2C2A29', // Warm Dark Gray
+                muted: '#5C5856',
+              }
+            },
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #FDFBF7;
+        color: #333333;
+      }
+    </style>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D9DUU1JC77U852QM9TUG');
+      ttq.page();
+      // Track Purchase
+      const urlParams = new URLSearchParams(window.location.search);
+      const offerValue = urlParams.get('value') || 279;
+      
+      ttq.track('CompletePayment', {
+        content_name: 'طقم مفارش سرير Soft Estampado',
+        value: Number(offerValue),
+        currency: 'MAD'
+      });
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-lg w-full text-center border border-gray-100">
+      <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-3xl font-bold text-text-main mb-4">تم تأكيد طلبك بنجاح!</h1>
+      <p class="text-lg text-text-muted mb-8">
+        شكراً لك على ثقتك بنا. سنتصل بك قريباً لتأكيد تفاصيل التوصيل.
+      </p>
+      <a href="/" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-xl transition-colors shadow-md">
+        العودة للصفحة الرئيسية
+      </a>
+    </div>
+  </body>
+</html>
