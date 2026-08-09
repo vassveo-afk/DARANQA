@@ -20,6 +20,24 @@ export function Hero() {
     setCurrentImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
   };
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    if (touchStart - touchEnd > 50) {
+      nextImage(); // Swipe left (in RTL context, could mean prev/next differently, let's just do next)
+    }
+    if (touchStart - touchEnd < -50) {
+      prevImage(); // Swipe right
+    }
+    setTouchStart(null);
+  };
+
   const scrollToOrder = (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' });
@@ -77,7 +95,11 @@ export function Hero() {
           
           <div className="order-1 lg:order-2 relative">
             <div className="absolute inset-0 bg-accent/20 rounded-[2rem] transform rotate-3 scale-105 -z-10"></div>
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-white border border-gray-100 group">
+            <div 
+              className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-white border border-gray-100 group"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div 
                 className="flex transition-transform duration-500 ease-out h-full"
                 style={{ transform: `translateX(${currentImageIndex * 100}%)` }}
@@ -100,13 +122,13 @@ export function Hero() {
               {/* Controls */}
               <button 
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-md opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
               <button 
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary shadow-md opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
